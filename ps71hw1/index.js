@@ -25,6 +25,24 @@ app.get("/seed_db", async (req, res) => {
   }
 });
 
+app.post("/new-book", async (req, res) => {
+  try {
+    const bookName = req.body.name;
+    await book.create({
+      name: bookName,
+    });
+
+    res
+      .status(200)
+      .json({ message: "New book added successfully.", name: bookName });
+  } catch (error) {
+    res.status(500).json({
+      message: "Unexpected error occurred while creating new book entry",
+      error: error,
+    });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
 });
