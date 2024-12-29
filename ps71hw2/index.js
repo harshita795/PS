@@ -22,6 +22,25 @@ app.get("/seed_db", async (req, res) => {
   }
 });
 
+app.post("/new-movie", async (req, res) => {
+  try {
+    const movieName = req.body.name;
+    await movie.create({
+      name: movieName,
+    });
+
+    res.status(200).json({
+      message: "New movie record added successfully!",
+      name: movieName,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Unexpected error occurred while creating new movie entry",
+      error: error,
+    });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
 });
