@@ -22,6 +22,22 @@ app.get("/seed_db", async (req, res) => {
   }
 });
 
+app.post("/new-student", async (req, res) => {
+  try {
+    let studentName = req.body.name;
+    await student.create({
+      name: studentName,
+    });
+
+    res.status(200).json({ message: "New student added successfully." });
+  } catch (error) {
+    res.status(500).json({
+      message: "Unexpected error occured while creating a new student entry.",
+      error: error,
+    });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
 });
