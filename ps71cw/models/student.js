@@ -5,6 +5,13 @@ const student = sequelize.define("student", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  email: {
+    type: DataTypes.STRING,
+  },
+  age: {
+    type: DataTypes.STRING,
+    defaultValue: 18,
+  },
 });
 
 module.exports = student;

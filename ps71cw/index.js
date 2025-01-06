@@ -6,7 +6,10 @@ let { sequelize } = require("./config/database.js");
 const PORT = 3000;
 app.use(express.json());
 
-let studentData = [{ name: "John Doe" }, { name: "Rita Singh" }];
+let studentData = [
+  { name: "Rohan Singh", email: "rohan@example.com", age: 21 },
+  { name: "Vita Singh", email: "vita@example.com", age: 23 },
+];
 
 app.get("/seed_db", async (req, res) => {
   try {
