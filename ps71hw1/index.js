@@ -7,9 +7,21 @@ const PORT = 3000;
 app.use(express.json());
 
 const books = [
-  { name: "The Great Gatsby" },
-  { name: "To Kill a Mockingbird" },
-  { name: "1984" },
+  {
+    name: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    releaseYear: 1925,
+  },
+  {
+    name: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    releaseYear: 1960,
+  },
+  {
+    name: "1984",
+    author: "George Orwell",
+    releaseYear: 1949,
+  },
 ];
 
 app.get("/seed_db", async (req, res) => {

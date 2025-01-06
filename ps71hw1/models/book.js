@@ -5,6 +5,12 @@ let book = sequelize.define("book", {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  author: {
+    type: DataTypes.STRING,
+  },
+  releaseYear: {
+    type: DataTypes.NUMBER,
+  },
 });
 
 module.exports = book;
