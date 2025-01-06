@@ -7,8 +7,9 @@ const PORT = 3000;
 app.use(express.json());
 
 let studentData = [
-  { name: "Rohan Singh", email: "rohan@example.com", age: 21 },
-  { name: "Vita Singh", email: "vita@example.com", age: 23 },
+  { name: "Vikram Singh", email: "vikram@example.com", age: 22 },
+  { name: "Ravi Singh", email: "vikram@example.com", age: 25 },
+  { name: "Aisha Khan", email: "aisha@example.com", age: 25 },
 ];
 
 app.get("/seed_db", async (req, res) => {
