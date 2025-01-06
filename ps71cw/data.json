@@ -1,0 +1,57 @@
+{
+  "teachers": [
+    {
+      "name": "Rajesh Gupta",
+      "email": "rajesh.gupta@example.com"
+    },
+    {
+      "name": "Swati Sharma",
+      "email": "swati.sharma@example.com"
+    }
+  ],
+
+  "classrooms": [
+    { "name": "Mathematics", "teacherId": 1 },
+    { "name": "Physics", "teacherId": 2 },
+    { "name": "Chemistry", "teacherId": 2 }
+  ],
+
+  "studentData": [
+    {
+      "name": "Vikrant Singh",
+      "email": "vikram@example.com",
+      "age": 21,
+      "classroomId": 1
+    },
+    {
+      "name": "Ravi Jain",
+      "email": "ravi@example.com",
+      "age": 23,
+      "classroomId": 2
+    },
+    {
+      "name": "Aish Khan",
+      "email": "aish@example.com",
+      "age": 24,
+      "classroomId": 3
+    },
+    {
+      "name": "Neha Sharma",
+      "email": "neha@example.com",
+      "age": 20,
+      "classroomId": 1
+    },
+    {
+      "name": "Kunal Mehra",
+      "email": "kunal@example.com",
+      "age": 22,
+      "classroomId": 2
+    },
+    {
+      "name": "Priya Desai",
+      "email": "priya@example.com",
+      "age": 25,
+      "classroomId": 3
+    }
+  ]
+}

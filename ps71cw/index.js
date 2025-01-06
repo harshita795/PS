@@ -3,44 +3,11 @@ const app = express();
 const student = require("./models/student.js");
 let { sequelize } = require("./config/database.js");
 const classroom = require("./models/classroom.js");
+const teacher = require("./models/teacher.js");
+const data = require("./data.json");
 
 const PORT = 3000;
 app.use(express.json());
-
-let classrooms = [
-  { name: "Mathematics" },
-  { name: "Physics" },
-  { name: "Chemistry" },
-];
-
-let studentData = [
-  {
-    name: "Vikrant Singh",
-    email: "vikram@example.com",
-    age: 21,
-    classroomId: 1,
-  },
-  { name: "Ravi Jain", email: "ravi@example.com", age: 23, classroomId: 2 },
-  { name: "Aish Khan", email: "aish@example.com", age: 24, classroomId: 3 },
-  {
-    name: "Neha Sharma",
-    email: "neha@example.com",
-    age: 20,
-    classroomId: 1,
-  },
-  {
-    name: "Kunal Mehra",
-    email: "kunal@example.com",
-    age: 22,
-    classroomId: 2,
-  },
-  {
-    name: "Priya Desai",
-    email: "priya@example.com",
-    age: 25,
-    classroomId: 3,
-  },
-];
 
 app.get("/seed_db", async (req, res) => {
   try {
@@ -54,9 +21,12 @@ app.get("/seed_db", async (req, res) => {
     //   age: 21,
     //   classroomId: classRoom.id,
     // });
-    await classroom.bulkCreate(classrooms);
 
-    await student.bulkCreate(studentData);
+    await teacher.bulkCreate(data.teachers);
+
+    await classroom.bulkCreate(data.classrooms);
+
+    await student.bulkCreate(data.studentData);
 
     res.status(200).json({
       message:
