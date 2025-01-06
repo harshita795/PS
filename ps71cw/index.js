@@ -7,30 +7,60 @@ const classroom = require("./models/classroom.js");
 const PORT = 3000;
 app.use(express.json());
 
-// let studentData = [
-//   { name: "Vikram Singh", email: "vikram@example.com", age: 22 },
-//   { name: "Ravi Singh", email: "vikram@example.com", age: 25 },
-//   { name: "Aisha Khan", email: "aisha@example.com", age: 25 },
-// ];
+let classrooms = [
+  { name: "Mathematics" },
+  { name: "Physics" },
+  { name: "Chemistry" },
+];
+
+let studentData = [
+  {
+    name: "Vikrant Singh",
+    email: "vikram@example.com",
+    age: 21,
+    classroomId: 1,
+  },
+  { name: "Ravi Jain", email: "ravi@example.com", age: 23, classroomId: 2 },
+  { name: "Aish Khan", email: "aish@example.com", age: 24, classroomId: 3 },
+  {
+    name: "Neha Sharma",
+    email: "neha@example.com",
+    age: 20,
+    classroomId: 1,
+  },
+  {
+    name: "Kunal Mehra",
+    email: "kunal@example.com",
+    age: 22,
+    classroomId: 2,
+  },
+  {
+    name: "Priya Desai",
+    email: "priya@example.com",
+    age: 25,
+    classroomId: 3,
+  },
+];
 
 app.get("/seed_db", async (req, res) => {
   try {
     await sequelize.sync({ force: true });
 
-    let classRoom = await classroom.create({ name: "Mathematics" });
+    // let classRoom = await classroom.create({ name: "Mathematics" });
 
-    const Student = await student.create({
-      name: "Vikki Singh",
-      email: "vikki@example.com",
-      age: 21,
-      classroomId: classRoom.id,
-    });
+    // const Student = await student.create({
+    //   name: "Vikki Singh",
+    //   email: "vikki@example.com",
+    //   age: 21,
+    //   classroomId: classRoom.id,
+    // });
+    await classroom.bulkCreate(classrooms);
 
-    // await student.bulkCreate(studentData);
+    await student.bulkCreate(studentData);
 
     res.status(200).json({
-      message: "Database seeded with foreign key relation",
-      student: Student,
+      message:
+        "Database seeded with multiple records with foreign key relation",
     });
   } catch (error) {
     res
