@@ -6,7 +6,23 @@ const { sequelize } = require("./config/database.js");
 const PORT = 3000;
 app.use(express.json());
 
-const movies = [{ name: "Inception" }, { name: "Iron Man" }, { name: "Thor" }];
+const movies = [
+  {
+    name: "Inception",
+    genre: "Science Fiction",
+    releaseYear: 2010,
+  },
+  {
+    name: "Iron Man",
+    genre: "Superhero",
+    releaseYear: 2008,
+  },
+  {
+    name: "Thor",
+    genre: "Superhero",
+    releaseYear: 2011,
+  },
+];
 
 app.get("/seed_db", async (req, res) => {
   try {

@@ -5,6 +5,12 @@ let movie = sequelize.define("movie", {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  genre: {
+    type: DataTypes.STRING,
+  },
+  releaseYear: {
+    type: DataTypes.NUMBER,
+  },
 });
 
 module.exports = movie;
