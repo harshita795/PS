@@ -2,23 +2,36 @@ const express = require("express");
 const app = express();
 const student = require("./models/student.js");
 let { sequelize } = require("./config/database.js");
+const classroom = require("./models/classroom.js");
 
 const PORT = 3000;
 app.use(express.json());
 
-let studentData = [
-  { name: "Vikram Singh", email: "vikram@example.com", age: 22 },
-  { name: "Ravi Singh", email: "vikram@example.com", age: 25 },
-  { name: "Aisha Khan", email: "aisha@example.com", age: 25 },
-];
+// let studentData = [
+//   { name: "Vikram Singh", email: "vikram@example.com", age: 22 },
+//   { name: "Ravi Singh", email: "vikram@example.com", age: 25 },
+//   { name: "Aisha Khan", email: "aisha@example.com", age: 25 },
+// ];
 
 app.get("/seed_db", async (req, res) => {
   try {
     await sequelize.sync({ force: true });
 
-    await student.bulkCreate(studentData);
+    let classRoom = await classroom.create({ name: "Mathematics" });
 
-    res.status(200).json({ message: "Database seeded successfully" });
+    const Student = await student.create({
+      name: "Vikki Singh",
+      email: "vikki@example.com",
+      age: 21,
+      classroomId: classRoom.id,
+    });
+
+    // await student.bulkCreate(studentData);
+
+    res.status(200).json({
+      message: "Database seeded with foreign key relation",
+      student: Student,
+    });
   } catch (error) {
     res
       .status(500)
